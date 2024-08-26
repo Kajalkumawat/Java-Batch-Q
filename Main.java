@@ -1,110 +1,260 @@
-// polymorphism :
-// ->poly means :multiple
+// // class A {
+// // // method overloading
+// // void show(float a) {
+// // System.out.println("integer" + a);
+// // }
 
-// morphism :single forms
+// // int show(int a) {
+// // System.out.println("int" + a);
+// // return a;
+// // }
+// // }
 
-// a single action in different ways
+// // public class Main {
+// // public static void main(String[] args) {
+// // A p = new A();
+// // p.show(7);
+// // }
+// // }
+// method overrhiding :
 
-// types :
-// a)run time polymorphism Dynamic Method Dispatch
-// ->method overriding ,method overhiding
+// class name diffrent and method name same but all methods must be static
 
-// b)compile time polymorphism Static Method Dispatch
-// ->method overloading, constructor overloading , constructor chaining
-// ---------------------------------------------------------------------
-// method overriding :
-// ->class name different but method name same
-
+// //mthod overhiding
 // class A {
-// void show() {
-// System.out.println("A class method");
+// static void show() {
+// System.out.println("A class method ");
 // }
 // }
 
 // class B extends A {
-// void show() {
+// static void show() {
 // System.out.println("B class method");
 // }
 // }
 
-// public class Main1 {
+// public class Main {
 // public static void main(String[] args) {
 // B p = new B();
 // p.show();
 // }
 // }
-// -----------------------------------------------------
-// ->class name different and method name same but number of prameters will be
-// different then code will be override or not
+// --------------------------------------------------
+// solve the problem of method overriding :no
 
-// yes it will be override
+// inside the static method we will does not used super keyword
+// -----------------------------------------------
+// super used :
+// first used method overriding
+
+// second used of super keyword :
+// ->super method is used for access the parent class constructor property
+// class A {
+// A(int a) {
+// System.out.println("hello");
+// }
+// }
+
+// class B extends A {
+// B() {
+// System.out.println("B constructor");
+// }
+// }
+
+// public class Main {
+// public static void main(String[] args) {
+// new B();
+// }
+// }
+
+// want to solve this problem : used super
+// class A {
+// A(int a) {
+// System.out.println("hello" + a);
+// }
+// }
+
+// class B extends A {
+// B() {
+// super(78);
+// System.out.println("B constructor");
+// }
+// }
+
+// public class Main {
+// public static void main(String[] args) {
+// new B();
+// }
+// }
+// ----------------------------------------------------------------
+// super third used : override variable
 
 // class A {
+// String name = "hello";
+// }
+
+// class B extends A {
+// String name = "bye";
+
+// void show() {
+// System.out.println(name);
+// }
+// }
+
+// public class Main {
+// public static void main(String[] args) {
+// B p=new B();
+// p.show();
+// }
+// }
+// ======================================================
+// class A {
+// String name = "hello";
+// }
+
+// class B extends A {
+// String name = "bye";
+
+// void show() {
+// System.out.println(super.name);
+// System.out.println(name);
+// }
+// }
+
+// public class Main {
+// public static void main(String[] args) {
+// B p = new B();
+// p.show();
+// }
+// }
+// ======================================================
+// compile time polymorphism :static binding | static method dispatch
+
+// ->method overloading
+// ->constructor overloading
+// ->constructor chaining
+// ======================================================
+// method overloading :
+// ->in a class method name same then method will be overloaded
+// class A{
+// //method overloading
+// void show(){
+
+// }
+// void show(){
+
+// }
+// }
+// public class Main {
+// public static void main(String[] args) {
+
+// }
+// }
+// ----------------------------------------------------
+// want to solve the problem of method overloading :
+// ->in a class method name same but number of parameters will be different
+// class A {
+// // method overloading
 // void show(int a) {
-// System.out.println("A class method");
+// System.out.println(a);
+// }
+
+// void show() {
+// System.out.println("Hello World");
 // }
 // }
 
-// class B extends A {
-// void show(int a, int b) {
-// System.out.println("B class method" + a + " " + b);
-// }
-// }
-
-// public class Main1 {
+// public class Main {
 // public static void main(String[] args) {
-// B p = new B();
-// p.show(3, 4);
+// A p = new A();
+// p.show();
+// p.show(78);
 // }
 // }
-// -------------------------------------------------------------------
-// how to solve the problem :
-
-// super :it is a keyword and used to refer the parent class method in method
-// overriding
+// ----------------------------------------------------
+// ->in a class method name same but number of parameter is also same but return
+// type of parameter will be different
 
 // class A {
-// void show() {
-// System.out.println("A class method");
+// // method overloading
+// void show(int a) {
+// System.out.println(a);
+// }
+
+// void show(float a) {
+// System.out.println(a);
 // }
 // }
 
-// class B extends A {
-// void show() {
-// super.show();
-// System.out.println("B class method");
-// }
-// }
-
-// public class Main1 {
+// public class Main {
 // public static void main(String[] args) {
-// B p = new B();
-// p.show();
+// A p = new A();
+// p.show(6.8f);
+// p.show(78);
 // }
 // }
-// -----------------------------------------------------------------
-// ->class name different and method name same but number of prameters will be
-// same but return type of method diffrent then code will be override or not
-
-// it is not possible
+// ------------------------------------------------------
+// in a class method name same but parameter also same but first in int and
+// second method in byte then what happend ?
 
 // class A {
-// int show() {
-// System.out.println("A class method");
-// return 0;
+// // method overloading
+// void show(byte a) {
+// System.out.println("byte" + a);
+// }
+
+// void show(int a) {
+// System.out.println("int" + a);
 // }
 // }
 
-// class B extends A {
-// void show() {
-// System.out.println("B class method");
-// }
-// }
-
-// public class Main1 {
+// public class Main {
 // public static void main(String[] args) {
-// B p = new B();
-// p.show();
+// A p = new A();
+// p.show(78);
 // }
 // }
-// -----------------------------------------------------------------
+
+// second point :double float
+// class A {
+// // method overloading
+// void show(float a) {
+// System.out.println("float" + a);
+// }
+
+// void show(double a) {
+// System.out.println("double" + a);
+// }
+// }
+
+// public class Main {
+// public static void main(String[] args) {
+// A p = new A();
+// p.show(7.8);
+// }
+// }
+
+// third :int Integer priority ->int
+// --------------------------------------------------------------
+// ->in a class method name same but number of parameter also same but return
+// type of method will be change
+
+// class A {
+// // method overloading
+// void show(float a) {
+// System.out.println("integer" + a);
+// }
+
+// int show(int a) {
+// System.out.println("int" + a);
+// return a;
+// }
+// }
+
+// public class Main {
+// public static void main(String[] args) {
+// A p = new A();
+// p.show(7);
+// }
+// }
+// --------------------------------------------------------
