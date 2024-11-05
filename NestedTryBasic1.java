@@ -4,10 +4,10 @@ public class NestedTryBasic1 {
             try {
                 int a = 9 / 0;
                 System.out.println(a);
-            } catch (ArithmeticException ex) {
+            } catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("arithemtic handle");
             }
-        } catch (Exception ex) {
+        } catch (ArithmeticException ex) {
             System.out.println("exception class handle");
         }
     }
